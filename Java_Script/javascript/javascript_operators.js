@@ -89,3 +89,10 @@ var john_bmi = john_weight /john_height**2;
 console.log(john_bmi);
 
 console.log(mark_bmi > john_bmi);
+
+if(mark_bmi>john_bmi)
+{
+    console.log(`mark bmi ${mark_bmi} is higher than john`);
+}else{
+    console.log(`john bmi ${john_bmi} is higher than mark`);
+}
