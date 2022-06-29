@@ -133,3 +133,14 @@ if (mark_detail.calBMI() > john_detail.calBMI()) {
 } else if (john_detail.calBMI() > mark_detail.calBMI()) {
   console.log('john bmi is higher');
 }
+
+//Array to Object
+const arrCreated = ['a', 'b', 'c'];
+const objectCreated = {
+  0: arrCreated[0],
+};
+console.log(objectCreated);
+
+//But through assign
+const newObjectCreated = Object.assign({}, arrCreated);
+console.log(newObjectCreated);
