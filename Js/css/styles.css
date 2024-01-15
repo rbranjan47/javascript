@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("../metaData/pexels-karyme-frança-1535907.jpg");
+    background-repeat: no-repeat;
+    background-size: contain, cover;
+    height: 7500px;
+    text-align: center;
+}
+
+.greeting {
+    margin: 100px;
+    padding: 20px;
+    background-color: #db500f;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    color: #333;
+    font-family: sans-serif;
+}
+
+p {
+    color: #666;
+    font-family: sans-serif;
+}

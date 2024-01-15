@@ -23,7 +23,7 @@ So, Browser have all
 
 * To access browser's super powers, -----> Web API's
 * To access all web API's, we have to use window:
-  As, all API falls under window.
+  As, all API falls under window. 
 
 
 */
