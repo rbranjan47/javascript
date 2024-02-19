@@ -287,10 +287,11 @@ const argumentsObjectSum = function (num) {
 var sCount = argumentsObjectSum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 console.log('Sum is:' + sum);
 
+
 //
 //Length of undefined unput keyword
 const argumentsInputKeywords = function (num) {
   console.log('Length of Arrays/Arguments: ' + arguments.length);
 };
 
-argumentsInputKeywords(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 22, 20);
+argumentsInputKeywords(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 22, 20, 24, 26);
