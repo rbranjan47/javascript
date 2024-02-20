@@ -184,17 +184,17 @@ const orderPizza = function( ingredient1, ingredient2, ingredient3){
 }
 
 //calling orderPizza function
-const callingIngredients = [
-  prompt("Let make pizza with Ingredient1 with:"),
-  prompt("It will also have Ingredient2 as:"),
-  prompt("and final Ingredient3 as:")
-]
+// const callingIngredients = [
+//   prompt("Let make pizza with Ingredient1 with:"),
+//   prompt("It will also have Ingredient2 as:"),
+//   prompt("and final Ingredient3 as:")
+// ]
 
-//calling functions, Normally
-orderPizza(callingIngredients[0], callingIngredients[1], callingIngredients[2]);
+// //calling functions, Normally
+// orderPizza(callingIngredients[0], callingIngredients[1], callingIngredients[2]);
 
-//calling function using SPREAD OPERATOR
-orderPizza(...callingIngredients);
+// //calling function using SPREAD OPERATOR
+// orderPizza(...callingIngredients);
 
 
 
@@ -258,6 +258,7 @@ console.log(travelDelhiUpdatedCopied2);
     const propertyDishObj = {
         placeName: "Texas",
         placeAlternateName:"",
+        placeAlternateName2: "",
         placeCountry: "United States",
         placeState: "Texas Main States",
         placePin: 750093,
@@ -280,16 +281,21 @@ console.log(travelDelhiUpdatedCopied2);
         onlineOrder: true,
         mostlyPlacedOrder: ["Chicken Rice", "Veg Soup", "Pizza"],
         priceOrderdBy:[110, 120, 130, 140, 150, 166.44],
+
+
         //with more parameter in function
         orderSnacks: function(mainIngredient, ...additionalIngredient){
            console.log(`orderd food itmes: ${mainIngredient} and ${additionalIngredient}`);
         },
+
 
         //spred operator as order pizza as getting arguments from user
         orderDInner: function(dish, ingredient1, ingredient2, ingredient3){
             console.log(`You have orderde this dish: ${dish} with Ingredient: ${ingredient1}, ${ingredient2} and ${ingredient3}`)
         },
     }
+
+
 
     //We can not declare Rest Element at first like const [...bestFoodsVar, ...mostlyPlacedOrderVar], cause Rest Element will be the Last Element
     //Also, one desctucting rest element should be as variable
@@ -314,7 +320,14 @@ propertyDishObj.orderSnacks("pizza", ...propertyDishObj.mostlyPlacedOrder);
 //or
 //propertyDishObj.orderDInner(...orderDinnerPrompt);
 
-//--------------Short Circuting: Evalauting expression from left to right, using AND(&&) and OR(||) operator
+//----------------------------------------------------------------------------------------------//
+
+
+/*
+               >>>>>>>>>>>>>> SHORT CIRCUITING<<<<<<<<<<<<<<
+               > Evalauting expression from left to right, using AND(&&) and OR(||) operator
+*/
+
 function shortCircuitTruthyFalsy(){
     console.log(true || true); //true
     console.log(false || true); //true
@@ -344,10 +357,84 @@ propertyDishObj.placeName ? console.log(propertyDishObj.placeName): console.log(
 
 propertyDishObj.placeAlternateName ? console.log(propertyDishObj.placeName): console.log(propertyDishObj.placeCountry);
 //or we can print by assigning some value
-propertyDishObj.placeAlternateName ? console.log(propertyDishObj.placeName): console.log(propertyDishObj.placeAlternateName="The Lone Star State in USA");
+propertyDishObj.placeAlternateName ? sssconsole.log(propertyDishObj.placeName): console.log(propertyDishObj.placeAlternateName="The Lone Star State in USA");
 
 
 //NUllISH Operator, Return right value when Left Value if null or Undefined
+const nullishCheck = propertyDishObj.placeAlternateName2 ?? "Default";
+console.log(nullishCheck);  //defaultss
 
+//
+//
+//>>>>>>>>>>>>>>>>>>>>>Logical Assignments<<<<<<<<<<<<<<<<<<<<
+//
+//
+//
+const org1={
+  name: "thinksys",
+  owner: "Rajiv Jain",
+  cto:"",
+}
+
+const org2={
+  name: "ResMan",
+  cto:"Nick",
+}
+
+org1.owner = org1.owner || "Anshul Jain";
+org2.owner = org2.owner || "Corbin";
+
+console.log(`${org1.owner} ,
+sss${org2.owner}`); 
+// org1.owner is Rajiv Jain, cause org1.owner is truthy
+// org2.owner is not present i.e. falsy so org2.owner is Corbin
+
+
+//OR WE WRITE IN THIS WAY
+org1.cto ||= "Vipin";  //cto is falsy for org1.cto, Vipinssss
+org2.cto ||= "Corbin"; //cto is truthy for org2.cto    Nick
+console.log(`${org1.cto} ,
+${org2.cto}`);
+
+//Using Nullish Assignment Operator
+org1.cto ??= "Vipin";  //cto is falsy for org1.cto   Vipin
+org2.cto ??= "Corbin"; //cto is truthy for org2.cto   Nick
+console.log(`${org1.cto} ,
+${org2.cto}`);
+
+/*
+               >>>>>>>>>>>>>> ARRAY FOR-OF LOOP<<<<<<<<<<<<<<
+        > The for...of statement executes a loop that operates on a sequence of values sourced from an iterable object.
+*/
+
+
+const arrayElements = ["Mumbai", "Bengaluru", "Chennai", "Delhi", "Noida", "Pune", "Gurgaon", "Kolkatta", "Hyderabad"];
+//Iterating using for-of loop
+for(const elem of arrayElements){
+  console.log(elem);
+}
+
+//from propertyDishObj object
+const mostlyOrderWithPrices = [...propertyDishObj.mostlyPlacedOrder, ...propertyDishObj.priceOrderdBy];
+
+//entries() function returns Iterable Key-Value Pair in Array
+for(const mostlyOrderWithPricesEle of mostlyOrderWithPrices.entries() ) {
+  console.log(mostlyOrderWithPricesEle);
+}
+
+//Destructuring Array and writing in Simpler way
+for(const [i, elems] of mostlyOrderWithPrices.entries() ) {
+  console.log(`${i}: ${elems}`);
+}
+
+
+// for(var i=0;i<=propertyDishObj.mostlyPlacedOrder.length;i++){
+//   console.log(`Mostly Orderd: ${propertyDishObj.mostlyPlacedOrder[i]}, having price ${propertyDishObj.priceOrderdBy[i]}`);
+// }
+
+/*
+               >>>>>>>>>>>>>> OBJECT LITERAL<<<<<<<<<<<<<<
+               > An Object is an comma separated list of name-value pairs inside Curly Braces.
+*/
 
 
