@@ -219,3 +219,135 @@ console.log(travelDelhiUpdatedCopied2);
                > Improved way to handle parameters, 
                > Allowing us to more easily handle various inputs as Parameters in a function
 */
+
+
+ function userData(a,b,c,...argss){
+    console.log("a", a);
+    console.log("b", b);
+    console.log("multipleArgs", ...argss);
+    }
+    
+    userData("first", "second", "third", "fourth","fifth", "sixth");
+    
+    
+    const sumRestParameter = function sumData(sum,...sumMoreValue){
+        for(let a=0;a <sumMoreValue.length;a++){
+            sum = sum + sumMoreValue[a];
+        }
+        return sum;
+    }
+    
+    console.log(sumRestParameter(0, 1,2,3,4,5,6,7,8,9,10));
+    
+    
+    //sorting using Rest Parameter
+    const sortedParams = (...argssSortedVar)=>{
+        const sortedParamsAfter = argssSortedVar.sort();
+        return sortedParamsAfter;
+    }
+    //sorted result in Array
+    console.log(sortedParams(1,3,2,6,4,2,6,8));
+    //to string
+    console.log(sortedParams(1,3,2,6,4,2,6,8).toString());
+    
+    
+    const [city1, city2, ...cities] = ["Noida", "Bengaluru", "Mumbai", "Pune", "Hyederabad" ];
+    console.log(city1, city2, cities);
+
+
+    const propertyDishObj = {
+        placeName: "Texas",
+        placeAlternateName:"",
+        placeCountry: "United States",
+        placeState: "Texas Main States",
+        placePin: 750093,
+        bestFoods: {
+            morning: "Pizza",
+            afternoon: ["Chicken Rice","Corn Soup", "Non-veg Soup", "Chow"],
+            evening: ["Salad", "Veg Soup"]
+        },
+        openingHours:{
+            sun:"Close",
+            sat: {
+                open: 9,
+                close: 1,
+            },
+            otherDay:{
+                open: 9,
+                close: 7,
+            },
+        },
+        onlineOrder: true,
+        mostlyPlacedOrder: ["Chicken Rice", "Veg Soup", "Pizza"],
+        priceOrderdBy:[110, 120, 130, 140, 150, 166.44],
+        //with more parameter in function
+        orderSnacks: function(mainIngredient, ...additionalIngredient){
+           console.log(`orderd food itmes: ${mainIngredient} and ${additionalIngredient}`);
+        },
+
+        //spred operator as order pizza as getting arguments from user
+        orderDInner: function(dish, ingredient1, ingredient2, ingredient3){
+            console.log(`You have orderde this dish: ${dish} with Ingredient: ${ingredient1}, ${ingredient2} and ${ingredient3}`)
+        },
+    }
+
+    //We can not declare Rest Element at first like const [...bestFoodsVar, ...mostlyPlacedOrderVar], cause Rest Element will be the Last Element
+    //Also, one desctucting rest element should be as variable
+    const [bestFoodsVar, ...mostlyPlacedOrderVar] = [...propertyDishObj.bestFoods.afternoon, ...propertyDishObj.mostlyPlacedOrder];
+    console.log(`${bestFoodsVar}, 
+        ${mostlyPlacedOrderVar}`);
+
+
+        const {sun,...weekDays} = propertyDishObj.openingHours;
+        console.log(sun, weekDays);
+
+//Using simple function
+propertyDishObj.orderSnacks("pizza", ...propertyDishObj.mostlyPlacedOrder);
+
+//spread operator
+// const orderDinnerPrompt = [prompt("Enter Order Dish Name:"),
+// prompt("Ingredient 1 is:"),
+// prompt("Ingredient 2 is:"),
+// prompt("Ingredient 3 is:"),];
+
+//propertyDishObj.orderDInner(orderDinnerPrompt[0], orderDinnerPrompt[1],orderDinnerPrompt[2],orderDinnerPrompt[3]);
+//or
+//propertyDishObj.orderDInner(...orderDinnerPrompt);
+
+//--------------Short Circuting: Evalauting expression from left to right, using AND(&&) and OR(||) operator
+function shortCircuitTruthyFalsy(){
+    console.log(true || true); //true
+    console.log(false || true); //true
+    console.log(true || false);  //true
+    console.log(false || false); //false
+ 
+    console.log(true && true);  //true
+    console.log(false && true); //false
+    console.log(true && false); //false
+    console.log(false && false);  //false
+}
+
+shortCircuitTruthyFalsy();
+
+//Examples
+function  shortCircuitTruthyFalsyExamples(){
+    console.log("Hello" || false); //hello, as it is truthy
+    console.log("" || true); //"" is an falsy
+
+    console.log( ''|| 0 || "" ||"Hello..."|| false); //Hello...
+}
+
+shortCircuitTruthyFalsyExamples();
+
+//we can use in getting an expressions
+propertyDishObj.placeName ? console.log(propertyDishObj.placeName): console.log(propertyDishObj.placeCountry);
+
+propertyDishObj.placeAlternateName ? console.log(propertyDishObj.placeName): console.log(propertyDishObj.placeCountry);
+//or we can print by assigning some value
+propertyDishObj.placeAlternateName ? console.log(propertyDishObj.placeName): console.log(propertyDishObj.placeAlternateName="The Lone Star State in USA");
+
+
+//NUllISH Operator, Return right value when Left Value if null or Undefined
+
+
+
