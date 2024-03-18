@@ -5,7 +5,7 @@
                  >>>>>>>>>>>>>> Destructuring ARRAYS <<<<<<<<<<<<<<
  */
 
-  'use strict';
+  // 'use strict';
 
 const personDetails = {
     name: 'John Tan',
@@ -102,8 +102,8 @@ const travelDelhi = {
 }
 
 //destructing Objects, and getting data
-const {famousPlace, actualLocation, country} = travelDelhi;
-console.log(famousPlace, actualLocation, country);  //error
+const {famousPlace, actualLocation, country, foods = [] } = travelDelhi;
+console.log("Destructing Objects: " + famousPlace, actualLocation, country, foods); 
 
 
 //to make variable name DIFFERENT
@@ -113,8 +113,8 @@ ${originPlaces}
 ${originCountrys}`);  
 
 //We can fetch Object's Array, by creating Empty array
-const {food = [], transportMedian = []} = travelDelhi;
-console.log(food, transportMedian);
+const {famousPlace : famousPlaces , food = [], transportMedian = []} = travelDelhi;
+console.log(famousPlaces, food, transportMedian);
 
 //Mutating Variables(string concept) i.e. Changing size and assigned values
 
@@ -391,7 +391,7 @@ sss${org2.owner}`);
 
 
 //OR WE WRITE IN THIS WAY
-org1.cto ||= "Vipin";  //cto is falsy for org1.cto, Vipinssss
+org1.cto ||= "Vipin";  //cto is falsy for org1.cto, Vipin
 org2.cto ||= "Corbin"; //cto is truthy for org2.cto    Nick
 console.log(`${org1.cto} ,
 ${org2.cto}`);
@@ -438,3 +438,135 @@ for(const [i, elems] of mostlyOrderWithPrices.entries() ) {
 */
 
 
+//copied from propertyDishObj, above Object
+
+const openingHours ={
+  sun:"Close",
+  sat: {
+      open: 9,
+      close: 1,
+  },
+  otherDay:{
+      open: 9,
+      close: 7,
+  },
+}
+
+const propertyDishObjCopied = {
+  placeName: "Texas",
+  placeAlternateName:"",
+  placeAlternateName2: "",
+  placeCountry: "United States",
+  placeState: "Texas Main States",
+  placePin: 750093,
+  bestFoods: {
+      morning: "Pizza",
+      afternoon: ["Chicken Rice","Corn Soup", "Non-veg Soup", "Chow"],
+      evening: ["Salad", "Veg Soup"]
+  },
+  openingHours   //opening hours is an object literal inside another object
+,
+  onlineOrder: true,
+  mostlyPlacedOrder: ["Chicken Rice", "Veg Soup", "Pizza"],
+  priceOrderdBy:[110, 120, 130, 140, 150, 166.44],
+}
+
+
+console.log(propertyDishObjCopied);
+
+console.log(propertyDishObjCopied.openingHours);
+
+/*
+               >>>>>>>>>>>>>> OPTIONAL CHAINING<<<<<<<<<<<<<<
+              
+*/
+
+if((propertyDishObjCopied.openingHours.sat.open <= 8) && (propertyDishObjCopied.openingHours.sat.close <=1 )){
+  console.log("Shop is Opened at", propertyDishObjCopied.openingHours.sat.open )
+}
+else if (propertyDishObjCopied.openingHours.sun){
+  console.log("Shop Closed!")
+}
+
+
+/*
+               >>>>>>>>>>>>>> OBJECTS Keys, Values, and Enteries<<<<<<<<<<<<<<
+              
+*/
+
+//KEYS
+const objectPropertiesKeys = Object.keys(openingHours);
+console.log(`Keys: ${objectPropertiesKeys}`);
+
+//Values
+const objectPropertiesValues = Object.values(openingHours);
+console.log(`Values: ${objectPropertiesValues}`);
+
+//Enteries
+const objectPropertiesEnteries = Object.entries(openingHours);
+console.log(`Enteries: ${objectPropertiesEnteries}`);
+
+//de-structuring of Objects
+for(const [key, {open, close}]  of objectPropertiesEnteries){
+  console.log(key, open, close);
+}
+
+for(const daysCount of objectPropertiesEnteries){
+  console.log(`Open Days Count: ${daysCount.length}`);
+}
+
+//CODING CHALLENGE
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+    'Neuer',
+    'Pavard',
+    'Martine',
+    'Davies',
+    'Kimmich',
+    'Gortezha',
+    'Coman',
+    'Muller',
+    'Gnarby',
+    'Lewandowski'
+  ],
+  [
+    'Burki',
+    'Schulz',
+    'Hummles',
+    'Akjani',
+    'Hankini',
+    'Weigl',
+    'Witsel',
+    'Hazard',
+    'Sancho',
+    'Gotze',
+  ],
+],
+score: '4:0',
+scored:['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummles'],
+date: 'Oct 3 1997',
+odds:{
+  team1: 1.33,
+  x: 3.25,
+  team2: 6.5,
+},
+};
+
+//loop the game.scored array and print each player name to console, along with the foal number ex. Goal 1: Lewandowski
+
+const playerScored = game.scored;
+//using destructing array
+for(const [goal, playerName] of game.scored.entries())
+console.log(`Goal ${(goal+1)}: ${playerName}`);
+
+
+//using for of loop calculate average
+var num=0;
+ for(const avergaeOf of Object.values(game.odds)){
+  num  = num + avergaeOf;
+ }
+ const averageOffKeys = Object.keys(game.odds).length;
+ console.log(`Average of odds: ${(num/averageOffKeys)}`);

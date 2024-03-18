@@ -221,7 +221,7 @@ const personObjects2 = {
   // },
   startWork: function () {
     //Regular function returns actual value from personObject2 objects
-    console.log(this);
+    console.log("Using this Keyword inside function and in Object", this);
     console.log(`Hey, this KeyWord here: ${this.title} ${this.firstname}`);
   },
 };
@@ -295,3 +295,4 @@ const argumentsInputKeywords = function (num) {
 };
 
 argumentsInputKeywords(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 22, 20, 24, 26);
+
