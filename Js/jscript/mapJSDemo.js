@@ -114,3 +114,45 @@ console.log([...mapEx.values()]);
 console.log([...mapEx.entries()]);
 
 //coding challenge
+const gameEvents = new Map([
+    [17, '⚽Goal'],
+    [36, '🔀Substitution'],
+    [47, '⚽Goal'],
+    [61, '🔀Substitution'],
+    [64, '🟡Yello Card'],
+    [69, '🔴Red Card'],
+    [70, '🔀Substitution'],
+    [72, '🔀Substitution'],
+    [76, '⚽Goal'],
+    [80, '⚽Goal'],
+    [92, '🟡Yellow Card']
+])
+
+
+//1. Create an Array of 'Events' of different Game Event
+const gameEventArray = gameEvents.values();
+console.log([...gameEventArray]);
+
+//2. remove yellow card event at minute 64, since it was unfair
+gameEvents.delete(64);
+console.log(gameEvents);  //return map object
+console.log(gameEvents.entries()); //return an Iterator
+
+//3. print this string in console: 
+//"An Event happed on Average, every {Value} minutes."
+let averageTime = 0;
+for(let averageTimeFetch of gameEvents.keys()){
+    averageTime = averageTime + averageTimeFetch;
+}
+const averageTimeCal = averageTime / 90;
+console.log(`An Event happed on average, every ${Number.parseInt(averageTimeCal)} minutes`);
+
+//4. Mark goal first half and second half, based on 45 minutes
+for(let [scoredTime, scoredValue] of gameEvents.entries()){
+    if(scoredTime <= 45){
+        console.log(`[First Half] ${scoredTime}: ${scoredValue}`);
+    }
+    else{
+        console.log(`[Second Half] ${scoredTime}: ${scoredValue}`);
+    }
+}

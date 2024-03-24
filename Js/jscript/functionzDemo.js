@@ -78,3 +78,9 @@ function fruitProcessingCutted(Papaya, Pineapple, Watermelon) {
 console.log(
   `Fruits Salad Contains: ${fruitProcessingCutted(10, 12, 14)} pieces.`
 );
+
+
+/*>>>>>>>>>>>>>>>>>>>> Default Parameters <<<<<<<<<<<<<<<<<<<<<<
+  - To be initialized with Default values i.e. Undefined
+  - 
+*/
