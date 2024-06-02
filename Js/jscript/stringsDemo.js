@@ -15,9 +15,8 @@ const name1UsingConcat =
 console.log(name1UsingConcat);
 
 //Concatenating string using BACKTICKS(`)
-const name2UsingBackticks = `I'm  ${firstName} ${
-  currentYear - birthYear
-} a years old. I'm a ${job}!`;
+const name2UsingBackticks = `I'm  ${firstName} ${currentYear - birthYear
+  } a years old. I'm a ${job}!`;
 console.log(name2UsingBackticks);
 
 console.log(
@@ -60,12 +59,12 @@ console.log(data1[0].toUpperCase() + data1LowerCase.slice(1));
 
 
 //comparing email, TRIM Method
-const comparingEmail  = "rbranjan@gmail.com" == "     rbRANJan@gmail.com  \n".toLowerCase().trim() ? "Matched" : "Not Matched";
+const comparingEmail = "rbranjan@gmail.com" == "     rbRANJan@gmail.com  \n".toLowerCase().trim() ? "Matched" : "Not Matched";
 console.log(comparingEmail);
 
 //Replace Method
 const priceDollar = "$ 120";
-const priceRuppee = priceDollar.replace("$","₹");
+const priceRuppee = priceDollar.replace("$", "₹");
 console.log(priceRuppee);
 
 
@@ -88,7 +87,7 @@ console.log(planeInfo.startsWith("Air") && planeInfo.endsWith("tara"));
 //SubString
 const nameSubstring = "Hello Tesla";
 const nameNewSubstring1 = nameSubstring.substring(2); //start parameter
-const nameNewSubstring2 = nameSubstring.substring(2,8);
+const nameNewSubstring2 = nameSubstring.substring(2, 8);
 console.log(nameNewSubstring1);
 console.log(nameNewSubstring2);
 
@@ -96,11 +95,11 @@ console.log(nameNewSubstring2);
 //Split Operator, return Array element after breaking string from given characater
 const nameSplit = "a+very+nice+string+split";
 const nameAfterSplit = nameSplit.split("+");
-console.log(nameAfterSplit); 
+console.log(nameAfterSplit);
 
 //to use split to get value
 const devInfo = "John Tan is good developer";
-let  [firstnameDev, lastnameDev] = devInfo.split(" ");
+let [firstnameDev, lastnameDev] = devInfo.split(" ");
 console.log(firstnameDev, lastnameDev);
 
 
@@ -116,7 +115,7 @@ console.log(nameAfterSplit);
 
 //making capital letter of first character
 let arr = [];
-for(let n of nameAfterSplit){
+for (let n of nameAfterSplit) {
   arr.push(n.replace(n[0], n[0].toUpperCase()));
 }
 console.log(arr);
@@ -135,13 +134,12 @@ console.log(message.padEnd(25, "<"));
 (left -> Right)       0 1 2 3 4 5 6 7 8 9
 (Right -> Left)     -10-9-8-7-6-5-4-3-2-1
 */
-const describeAutomation = "Automation testing automates the website!";
-console.log(describeAutomation.slice(2)); //tomation testing automates the website!
-
-console.log(describeAutomation.slice(2, 11));
+const describeAutomation = "Automations testing automates the website!";
+console.log("Remove and Give String from 2nd Position: " + describeAutomation.slice(2)); //tomation testing automates the website!
+console.log("Remove and Give from 2nd to 10th Position: " + describeAutomation.slice(2, 11));//tomation 
 
 const creditCardDetail = "1234567891011121314";
-const creditCardSliced = creditCardDetail.slice(creditCardDetail.length-4);
+const creditCardSliced = creditCardDetail.slice(creditCardDetail.length - 4);
 const creditCardMasked = creditCardSliced.padStart(16, "X");
 console.log(`Credit card: ${creditCardDetail}
       Credit Card Sliced: ${creditCardSliced}
@@ -156,9 +154,15 @@ console.log(describeAutomation.repeat(4));
 //>>>>>>>>>>>>>>>>>>>> MODERN STRING WORKING <<<<<<<<<<<<<<<<<<<<
 const flights = "_Air India: vafsjkdsndkbs62784bahbdajgd87323 + _Vistara: hkjdbkbsjc873r973r2r + _Air Asia: jhnkbcsjhcb837gfwuifw + Air India Express:kjcuilhWHY9WDWLEUIFGWEF";
 
-const  flightDetailSpit = flights.split("+");
+const flightDetailSpit = flights.split("+");
 console.log(flightDetailSpit);
 
-for(let flightUnderSocredRemoved of flightDetailSpit){
+for (let flightUnderSocredRemoved of flightDetailSpit) {
   console.log(flightUnderSocredRemoved.replace("_", "").trim());
 }
+
+console.log("Length with BackSlash: " + "Rabi\"".length);//5, including backslash
+
+let strAmount = "Please Give Rs 1000";
+let strsAmountSliced = strAmount.slice((strAmount.indexOf('R')+3), strAmount.length);
+console.log("Amount Value:"+ strsAmountSliced);
