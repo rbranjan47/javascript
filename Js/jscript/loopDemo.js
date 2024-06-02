@@ -69,3 +69,30 @@ while (whileCheck <= 5) {
   console.log(`while checked at ${whileCheck}`);
   whileCheck++;
 }
+
+
+//For in used to iterate objects properties.
+let marksClass = {
+  Thomas: 24,
+  Corbin: 25,
+  John: 31,
+  Scott: 35,
+  Nick: 45,
+  Damitra: 33
+}
+
+for(let a in marksClass){
+  console.log("Marks of " + a + " are: "+ marksClass[a]);
+}
+
+//for of used to iterate Arrays, String, Maps, Node Lists
+let arrayPoint = [10, 20, 30, 40, 50, 60];
+for(let b of arrayPoint){
+  console.log(b);
+}
+
+
+let nameIterate = "Name in Iterate!";
+for(let c of nameIterate){
+  console.log(c);
+}

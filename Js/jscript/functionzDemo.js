@@ -46,15 +46,7 @@ console.log('Calculated Age: ' + calculatedAge(1997, 2024));
 
 //FUNCTION CALLING ANOTHER FUNCTION
 function fruitCuttingMachine(fruitInput) {
-  // if (fruitInput == 'Papaya') {
-  //   return fruitInput * 4;
-  // } else if (fruitInput == 'Pineapple') {
-  //   return fruitInput * 8;
-  // } else if (fruitInput == 'Watermelon') {
-  //   return fruitInput * 16;
-  // }
-
-  return fruitInput * 4;
+    return fruitInput * 4;
 }
 
 function fruitProcessingCutted(Papaya, Pineapple, Watermelon) {

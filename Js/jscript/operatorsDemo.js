@@ -48,7 +48,7 @@ let p = (q = 30 - 20 - 5);
 console.log(p, q);
 
 //Ternary/Conditional Operator
-const age = 25;
+const age = 15;
 age >= 25
   ? console.log('Ready to Drive Bike 🚵')
   : console.log('Drive Bicycle 🚲');
