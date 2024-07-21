@@ -9,14 +9,20 @@ function performLogger() {
 performLogger();
 performLogger();
 
+
+
 function fruitProcessing(apple, grapes, oranges) {
   console.log(`You have give me ${apple}, ${grapes}, and ${oranges}`);
   //total fruits
   const juice = Number(apple) + Number(grapes) + Number(oranges);
   return juice;
 }
+
+
 const totalFruits = fruitProcessing(10, 20, 30);
 console.log(`Total Fruits : ${totalFruits}`);
+
+
 
 //Function ---> Declaration vs Expressions
 
@@ -35,6 +41,8 @@ const calculateAge2 = function (birthYears) {
 const age2 = calculateAge2(1997);
 console.log(`Current Age: ${age2}`);
 
+
+
 //ARROW FUNCTION ()=>{}
 const calculatedAge = (birthYearss, currentYear) => {
   return currentYear - birthYearss;
@@ -43,6 +51,8 @@ const calculatedAge = (birthYearss, currentYear) => {
 console.log('Calculated Age: ' + calculatedAge(1997, 2024));
 
 //this > Keywrod represent owner of function, unlike in Regular function represents the Object that calls the function
+
+
 
 //FUNCTION CALLING ANOTHER FUNCTION
 function fruitCuttingMachine(fruitInput) {
@@ -70,6 +80,7 @@ function fruitProcessingCutted(Papaya, Pineapple, Watermelon) {
 console.log(
   `Fruits Salad Contains: ${fruitProcessingCutted(10, 12, 14)} pieces.`
 );
+
 
 
 /*>>>>>>>>>>>>>>>>>>>> Default Parameters <<<<<<<<<<<<<<<<<<<<<<
@@ -135,6 +146,7 @@ flightInformation("airIndia", 445, true, "delhi");
 flightInformation("Indigo");
 
 
+
 /*>>>>>>>>>>>>>>>>>>>> PASSING ARGUMENTS INTO FUNCTIONS: VALUE & REFERENCES <<<<<<<<<<<<<<<<<<<<<<
      -  SO Calling by VALUE might cause SERIOUS ISSUE, be careful of it
      - JS is never be like Passing by VALUE, it just look like Passing by Reference
@@ -146,7 +158,7 @@ const profileInfor = {
   job: "Product Manager",
   project: "ResMan",
   parentProject: "Inhabit IQ",
-  location: 'USA',
+  location: 'USA',   
   profileScore: 988, 
 }
 
@@ -181,11 +193,14 @@ console.log(name1);
 //name1 is NOT UPDATED with Mr. Corbin Du Mont from Corbin Du Mont, as name1 is passed as REFERENCE 
 
 
-//SO Calling by VALUE might cause SERIOUS ISSUE, be careful of it
+//SO Calling by VALUE might cause SERIOUS ISSUE, be careful of it.
+
+
 
 
 /*>>>>>>>>>>>>>>>>>>>> FIRST CLASS FUNCTION    VS    HIGH ORDER FUNCTION <<<<<<<<<<<<<<<<<<<<<<
-       - first class function
+
+       - first class function------------------
               > JS treats function as 'first-class citizens'.
               > This means functions are simply values
               
@@ -202,9 +217,118 @@ console.log(name1);
               const functionArgu = (a,b) => a+b;
               btnPerform.addEventListener('click', functionArgu);
 
-      - Highe Order Function
+
+              here, addEventListener -- Higher order function
+              and, functionArgu -- CallBack Function
+
+
+
+
+      - Highe Order Function------------------
               > Function recieves another function as an argument, that returns a new function or Both
                
               > Only possible because of First Class function
+
+              Ex. function count(){                 --- this is Higher order function
+              let counter =0;
+              return function(){                    --- Returned Function
+                while(counter < 10){ 
+                 counter++;
+                 }
+                }
+              }
               
 */
+
+
+/* FUCNTIONS(i.e. Higher Order Function) ACCEPTING ANOTHER CALLBACK FUNCTION*/
+
+const upperFirstWordFunction = function(Str){
+  const [firstStr, ...remainingStr] = Str.split(' ');
+  return [firstStr.toUpperCase(), ...remainingStr].join(' ');
+}
+
+const UpperFirstLetterFunction = function(Strs){
+  let newWord = [];
+  const splittedArray =  Strs.split(' ');
+  for(let fetchStrs of splittedArray){
+    const [firstLetter, ...spliitedStrs] = fetchStrs.split('');
+    newWord.push([firstLetter.toUpperCase(), ...spliitedStrs].join(''));
+  }
+  return newWord.join(' ');
+}
+
+//High Order function
+const highOrderAcceptingCallbackFunction = function(str, fn){
+  console.log(`Original String: ${str}`);
+  console.log(`Transformed String : ${fn(str)}`);
+
+  console.log(`Transforemd by function: ${fn.name}`);
+}
+
+
+highOrderAcceptingCallbackFunction("javascript is best!", upperFirstWordFunction);  //this function calling another function to complete its function process
+
+highOrderAcceptingCallbackFunction("javascript is best!", UpperFirstLetterFunction);
+
+             /* FUNCTION RETURNING ANOTHER FUNCTIONS */
+const detail = function(trainNumber){
+  return function(trainName){
+    console.log(`${trainName} ${trainNumber}`);
+  }
+}
+
+const runningDate = detail(12340);  //returning function(trainName)
+
+runningDate("Dhanbad Express");
+runningDate("New Delhi Express");  //second argument always same
+
+//we can also pass as single function with double argument passing at 1 time
+detail(12341)("Patna Express");
+detail(12342)("Ranchi Express");
+
+
+//OR WE CAN ACHEIVE FUNCTION RETURNING ANOTHER FUNCTION USING ARROW FUNCTION
+const detailArrowFun = trainNumber => trainName => console.log(` ${trainName} ${trainNumber}`) ;
+detailArrowFun("Jharkhand Express")(12321);
+detailArrowFun("Bihar Express")(12322);
+
+
+/*----------------------CALL and APPLY METHODS----------------------*/
+// -- To utilise the Functions/Methods inside any Object, we use Call and Apply method
+const akasaAir = {
+  airline:"Akasa_Air",
+  iataCode: "AAR",
+  bookings:[],
+  hub:"Mumbai",
+  //book function
+  book(flightNum, flightName, passengerName){
+   this.bookings.push(`${passengerName} booked flight on ${this.airline} as per preferred flight ${flightName}, having iata code: ${this.iataCode} ${flightNum}`);
+  },
+};
+akasaAir.book(121, "Akasa Air", 'John Tan');
+akasaAir.book(123, "Akasa Air", 'Scott Ledbetter');
+console.log(akasaAir.bookings);
+
+//Here Book Method defined inside akasaAir Object, to use outside store in a variable
+const bookOutSide = akasaAir.book;
+
+// -- To use CALL method, pass arguments Separtely along with other object name
+const indigo = {
+  airline:"Indigo",
+  iataCode:"IXI",
+  bookings:[],
+}
+
+bookOutSide.call(indigo, 900, "Indigo", "Corbin Du Mont");
+console.log(indigo);
+
+// -- To use APPLY method, pass arguments as Array along with other object name
+const spicejet = {
+  airline:"Spice Jet",
+  iataCode:"SJ",
+  bookings:[],
+}
+
+bookOutSide.apply(spicejet, [200, "Spice Jet", "Damitra Gage"]);
+console.log(spicejet);

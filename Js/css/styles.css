@@ -10,17 +10,17 @@ body {
 .greeting {
     margin: 100px;
     padding: 20px;
-    background-color: #db500f;
+    background-color: #050304;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
-    color: #333;
+    color: #a4da1d;
     font-family: sans-serif;
 }
 
 p {
-    color: #666;
+    color: #2f14c5;
     font-family: sans-serif;
 }

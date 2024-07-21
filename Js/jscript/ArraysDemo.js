@@ -34,14 +34,15 @@ console.log(calcAge1(values[5]));
 console.log(calcAge1(values[6])); //NAN
 
 /*----------- Operation on Array -----------*/
-//Adding elements to Array
+//PUSHING IN ELEMENT-----Adding elements to Array
 names.push('Nick');
 console.log(names);
+
 
 values.push(2001);
 console.log(values);
 
-//removing elements
+//POPPING OUT ELEMENT-----removing elements
 names.pop(); //removes last element of array i.e . Nick
 console.log(names);
 
