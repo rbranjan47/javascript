@@ -310,10 +310,10 @@ akasaAir.book(121, "Akasa Air", 'John Tan');
 akasaAir.book(123, "Akasa Air", 'Scott Ledbetter');
 console.log(akasaAir.bookings);
 
-//Here Book Method defined inside akasaAir Object, to use outside store in a variable
+//Here Book function defined inside akasaAir Object, to use outside store in a variable
 const bookOutSide = akasaAir.book;
 
-// -- To use CALL method, pass arguments Separtely along with other object name
+// -- CALL METHOD, pass arguments Separtely along with other object name
 const indigo = {
   airline:"Indigo",
   iataCode:"IXI",
@@ -323,12 +323,101 @@ const indigo = {
 bookOutSide.call(indigo, 900, "Indigo", "Corbin Du Mont");
 console.log(indigo);
 
-// -- To use APPLY method, pass arguments as Array along with other object name
+// -- APPLY METHOD, pass arguments as Array along with other object name
 const spicejet = {
   airline:"Spice Jet",
   iataCode:"SJ",
   bookings:[],
 }
 
-bookOutSide.apply(spicejet, [200, "Spice Jet", "Damitra Gage"]);
+const flightData = [200, "Spice Jet", "Damitra Gage"];
+//bookOutSide.apply(spicejet, [200, "Spice Jet", "Damitra Gage"]);
+bookOutSide.apply(spicejet, flightData);
 console.log(spicejet);
+
+// -- BIND METHOD, Like Call and Apply but it return a New Function and will utilise again and again passing only arguments
+const bookKingFisher = bookOutSide.bind(indigo, 23,  "Indigo_Kingfisher");
+
+
+bookKingFisher("Thomas");
+bookKingFisher("John Tan");
+
+
+//Normal Application
+const addingTaxes = (rate, value) => value + value*rate;
+console.log(addingTaxes(0.2, 400));
+
+//By Call, Apply, and Bind method
+const taxJharkhand = addingTaxes.call(null, 0.3, 500);
+console.log(taxJharkhand);
+
+const taxBihar = addingTaxes.apply(null, [0.4, 200]);
+console.log(taxBihar);
+
+const taxOthers = addingTaxes.bind(null, 0.5);
+console.log(taxOthers(200));
+console.log(taxOthers(400));
+console.log(taxOthers(600));
+console.log(taxOthers(800));
+console.log(taxOthers(1000));
+
+
+//Higher Order Function -- 1 Function calling another function
+const calculatingTax = function(fnrrate, fnvalue){
+  var taxAmt =  fnvalue + fnvalue * fnrrate;
+  return taxAmt;
+}
+const taxRateUsingHighOrderFunction = function(rate, value, fn){
+  return fn(rate, value);
+}
+
+console.log(taxRateUsingHighOrderFunction(0.2, 1600, calculatingTax));
+
+//Optimising
+
+const calculatingTaxOpt = function(optrate){
+  return function(optvalue){
+    return  optvalue + optvalue * optrate;
+  }
+}
+
+console.log(calculatingTaxOpt(0.2)(1840));
+
+//using Arrow Functions
+const calculatingTaxArrowFunction = arrwrate => arrwvalue => arrwvalue + arrwvalue * arrwrate;
+console.log(calculatingTaxArrowFunction(0.3)(4500));
+console.log(calculatingTaxArrowFunction(0.5)(5500));
+
+
+
+/*-------------------------Immediately Invoked Function Expression(IIFE)-------------------------
+   > Only executed Once and Never again
+   > i.e., Disappear after 1 usage
+
+*/
+
+const runOnce =function(){
+  console.log("This Function will never run again!");
+}
+
+runOnce(); //but we can utilise this again and again so,
+
+(function(){
+  console.log("This Function will never run again!");
+})();  //-- we can never use this again(IIFE)
+
+
+//Also in Arrow Function
+(()=>console.log("This Function will never run again!"))();
+
+
+/*-------------------------Function--CLOSURES-------------------------
+      > Combination of functions bundled together with references to surrounding state
+      > Gain Access of Outer Function Scope from Inner Function Scope
+      > Closure is created everytime wherever function defined in JS
+
+*/
+
+const busBooking  = function(){
+
+}
