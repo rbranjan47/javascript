@@ -1,3 +1,5 @@
+// >>>>>>>>>>>>>>>>>>>>>>>>>> STRING <<<<<<<<<<<<<<<<<<<<<<<<<
+
 const firstName = 'rabi';
 const job = 'software engineer';
 const birthYear = 1997;

@@ -1,3 +1,5 @@
+// >>>>>>>>>>>>>>>>>>>>>>>>>> SWITCH STATEMENTS <<<<<<<<<<<<<<<<<<<<<<<<<
+
 const expr = 'Mangoes';
 
 switch (expr) {

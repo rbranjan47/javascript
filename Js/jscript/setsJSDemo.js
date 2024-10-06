@@ -1,3 +1,5 @@
+// >>>>>>>>>>>>>>>>>>>>>>>>>> SET <<<<<<<<<<<<<<<<<<<<<<<<<
+
 //Set Object is collection of Unique values Like JAVA
 // No Duplicate are allowed
 // Contains any data type value in it.
@@ -65,3 +67,16 @@ let set2 = new Set([11, 22, 33, 44, 55, 66, 77, 50]);
 
 let intersectionSetChecked = set1.interSection(set2);
 console.log(...intersectionSetChecked);
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FOR EACH IN MAP <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+const topIndianCity = new Set(["Mumbai", "Delhi", "Kolkata", "Bengalore", "Chennai", "Hyderabad", "Ahmedabad", "Pune", "Surat", "Viskhapatnam"]);
+//usinf for of loop
+for(const iteratingIndiaCity of topIndianCity){
+        console.log(iteratingIndiaCity);
+}
+
+//using forEach loop
+topIndianCity.forEach(function(value, originalIndiaCitySet){
+        console.log(`City: ${value} and with word length: ${originalIndiaCitySet.length}`);
+});

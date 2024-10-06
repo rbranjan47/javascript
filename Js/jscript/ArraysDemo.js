@@ -1,3 +1,5 @@
+// >>>>>>>>>>>>>>>>>>>>>>>>>> ARRAY <<<<<<<<<<<<<<<<<<<<<<<<<
+
 //Arrays > Special Variables, store more than 1 values
 
 'use strict';
@@ -82,4 +84,96 @@ function calcAge2(actualValue, value, array) {
   calculatedAge += actualValue + '<br>';
 }
 console.log(values.forEach(calcAge2));
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>> IMPORTANT ARRAY CONCEPTS: <<<<<<<<<<<<<<<<<<<<<<<<<
+  -- Simple Array Methods
+  -- Looping arrays: forEach
+  -- forEach with Maps and Sets
+  -- Data Transformations: map, filter, & reduce
+  -- The map method
+  -- Computing Usernames
+  -- The filter method
+  -- The reduce method
+
+  -- The magic of Chaining methods
+  -- The Find Method
+  -- The Find Index Methods
+*/
+
+// >>>>> SLICE(startCount, endCount-1) method
+let arr01 = ['a', 'e', 'i', 'o', 'u'];;
+console.log(arr01);
+console.log(arr01.slice(2)); //will start from 2nd index and return rest
+console.log(arr01.slice(2, 4)); //will start from 2nd index and return element before 4th
+
+
+// >>>>> Making Array's shallow copy (means new instance created but the properties or elemenets still refer the same objects/array)
+//using spread operator  
+console.log([...arr01]);
+
+//using slice method
+console.log(arr01.slice());
+
+
+// >>>>>>>>>>>>>>> SPLICE(startCount, deleteElementCount) method
+//Similar to Slice array, but it delete elements from the exisiting array
+console.log(arr01);
+console.log(arr01.splice(2)); //return from 2nd position to last i.e. [i, o, u]
+console.log(arr01);  //return reamining i.e [a, e]
+
+// >>>>>>>>>>>>>>> Reverse method
+console.log(arr01);
+console.log(arr01.reverse());
+
+// >>>>>>>>>>>>>>> CONCAT method, add 2 arrys into 1
+const arr02 = ['q', 'u', 'e', 'r', 't', 'y'];
+console.log(arr01.concat(arr02));
+
+/* -- We can also achieve using REST parameter*/
+console.log([...arr01, ...arr02]);
+
+
+// >>>>>>>>>>>>>>> JOIN method  -- return string after adding passed paramter after each element of array
+console.log(arr02.join('-'));
+
+
+
+// >>>>>>>>>>>>>>> NEW METHODS OF ARRAY <<<<<<<<<<<<<<<
+// >> AT method, to access the element of array
+const arr03 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, -1, -2, -3, -4, -5, -6, -7, -8, -9];
+console.log(arr01[2]); //return 2nd position element i.e. 3
+
+console.log(arr03.at(2));
+
+// or we can use at position, to use when we don't know last index and element & want to perform action on it
+console.log(arr03[arr03.length - 1]);
+//or, using slice method
+console.log(arr03.slice(-1)[0]);
+//or, using splice method
+console.log(arr03.splice(arr03.length - 1), 1);
+
+// or using at method
+console.log(arr03.at(-1));
+
+
+// >>>>>>>>>>>>>>> LOOP ARRAY (forEach method) <<<<<<<<<<<<<<<
+
+//Using for of loop (- used for Arrays, String, Map, & Set)
+for (const numberItr of arr03) {
+  if (numberItr > 5) {
+    console.log(`Credited: ${numberItr}`);
+  } else {
+    console.log(`Debited: ${Math.abs(numberItr)}`);
+  }
+}
+
+//using forEach
+console.log("---------- For Each ----------");
+arr03.forEach(function (numbers, i, originalArr) {
+  if (numbers > 5) {
+    console.log(`For each Credited: ${numbers} at position ${i} having length ${originalArr.length}`);
+  } else {
+    console.log(`For each Debited: ${Math.abs(numbers)} at position ${i} having length ${originalArr.length}`);
+  }
+})
 

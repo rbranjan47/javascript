@@ -1,3 +1,5 @@
+// >>>>>>>>>>>>>>>>>>>>>>>>>> MAP <<<<<<<<<<<<<<<<<<<<<<<<<
+
 //Map is collection of elements Like Java, stores Key value pairs.
 //Map Object can hold Object and Primitive value as key Value pairs.
 
@@ -200,3 +202,30 @@ for (let [scoredTime, scoredValue] of gameEvents.entries()) {
 // Functions like -- Alert, Prompt, Confirm are part of BOM
 
 //location.href = "https://google.com";
+
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FOR EACH IN MAP <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+const indiaLanguages = new Map([
+    ["Delhi", "Hindi"],
+    ["Punjab", "Punjabi"],
+    ["Gujrat", "Gujrati"],
+    ["Maharastra", "Marathi"],
+    ["Bengal", "Bengali"],
+    ["Manipur", "Manipuri"],
+    ["Odisha", "Oriya"],
+    ["Andhra Pradesh", "Telugu"],
+    ["Karnataka", "Kannada"],
+    ["Tamil Nadu", "Tamil"],
+    ["Kerala", "Malyalam"],
+]);
+
+//Using for of loop (Array, Map, Set, String)
+for(const [a, b] of indiaLanguages){
+    console.log(`${a} Speaks, ${b}`);
+}
+
+console.log("---------- For Each ----------");
+//using forEach
+indiaLanguages.forEach(function(a, b, originalMapIndianLanguages){
+    console.log(`${a} Speaks, ${b}. total laguage ${originalMapIndianLanguages.size}`);
+});

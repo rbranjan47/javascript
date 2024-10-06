@@ -1,3 +1,5 @@
+// >>>>>>>>>>>>>>>>>>>>>>>>>> KEYWORDS (LET, CONST, & VAR) <<<<<<<<<<<<<<<<<<<<<<<<<
+
 console.log("hello World!");
 
 

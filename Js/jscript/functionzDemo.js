@@ -56,7 +56,7 @@ console.log('Calculated Age: ' + calculatedAge(1997, 2024));
 
 //FUNCTION CALLING ANOTHER FUNCTION
 function fruitCuttingMachine(fruitInput) {
-    return fruitInput * 4;
+  return fruitInput * 4;
 }
 
 function fruitProcessingCutted(Papaya, Pineapple, Watermelon) {
@@ -93,15 +93,15 @@ console.log(
 //funName as JavatPoint
 //funValue as 45
 // funZone as true
-const defaultParameterFunction = function(
-  funName="JavatPoint", 
-  funValue="45", 
-  funZone= true){
+const defaultParameterFunction = function (
+  funName = "JavatPoint",
+  funValue = "45",
+  funZone = true) {
 
-    //before ES6, in ES5 we handle from Short-Circuiting
-    // funName = funName || "JavatPoint";
-    // funValue = funValue || "45";
-    // funZone = funZone || true;
+  //before ES6, in ES5 we handle from Short-Circuiting
+  // funName = funName || "JavatPoint";
+  // funValue = funValue || "45";
+  // funZone = funZone || true;
 
 
   const functionObjects = {
@@ -123,20 +123,20 @@ defaultParameterFunction("geeksforgeeks", "100", false);
 
 
 //We can use the default parameter to define any values
-const flightInformation = function(
-  flightName='Air India Express', 
-  flightValue= 500, 
-  flightRun=true, 
-  flightOrigin='Bangalore'){
-    
+const flightInformation = function (
+  flightName = 'Air India Express',
+  flightValue = 500,
+  flightRun = true,
+  flightOrigin = 'Bangalore') {
 
-  console.log(flightName, flightValue,flightRun, flightOrigin);
+
+  console.log(flightName, flightValue, flightRun, flightOrigin);
 
   //as an Objects
   const fligthObjects = {
     flightName,
     flightValue,
-    flightRun, 
+    flightRun,
     flightOrigin
   }
   console.log(fligthObjects);
@@ -152,39 +152,39 @@ flightInformation("Indigo");
      - JS is never be like Passing by VALUE, it just look like Passing by Reference
 */
 
-const name1 ="Corbin Du Mont";
+const name1 = "Corbin Du Mont";
 
 const profileInfor = {
   job: "Product Manager",
   project: "ResMan",
   parentProject: "Inhabit IQ",
-  location: 'USA',   
-  profileScore: 988, 
+  location: 'USA',
+  profileScore: 988,
 }
 
 console.log(profileInfor);
 
 //defining a function
-const eligbleProductOwner = function(name, score){
-  
+const eligbleProductOwner = function (name, score) {
+
   //assigning name(variable > name), from calling by REFERENCE
   score.name = "Mr. " + name1;
 
-   //assigning parentProject(object variable > parentProject), from calling by VALUE
-   score.parentProject = "AnyoneHome " + score.parentProject;
+  //assigning parentProject(object variable > parentProject), from calling by VALUE
+  score.parentProject = "AnyoneHome " + score.parentProject;
 
   //using score, from calling by VALUE
-  if(score.profileScore > 800){
+  if (score.profileScore > 800) {
     console.log(`${score.name} has Qualified for Product Owner!`);
   }
-  else{
+  else {
     console.log(`${score.name} has Not Qualified!`);
   }
 }
 
 eligbleProductOwner(name1, profileInfor);
 
-console.log(profileInfor);  
+console.log(profileInfor);
 //parentProject of Object profileInfor get UPDATED with AnyoneHome InhabitIQ from  InhabitIQ, due to chan
 // Here, parentProject passed as VALUE
 
@@ -243,15 +243,15 @@ console.log(name1);
 
 /* FUCNTIONS(i.e. Higher Order Function) ACCEPTING ANOTHER CALLBACK FUNCTION*/
 
-const upperFirstWordFunction = function(Str){
+const upperFirstWordFunction = function (Str) {
   const [firstStr, ...remainingStr] = Str.split(' ');
   return [firstStr.toUpperCase(), ...remainingStr].join(' ');
 }
 
-const UpperFirstLetterFunction = function(Strs){
+const UpperFirstLetterFunction = function (Strs) {
   let newWord = [];
-  const splittedArray =  Strs.split(' ');
-  for(let fetchStrs of splittedArray){
+  const splittedArray = Strs.split(' ');
+  for (let fetchStrs of splittedArray) {
     const [firstLetter, ...spliitedStrs] = fetchStrs.split('');
     newWord.push([firstLetter.toUpperCase(), ...spliitedStrs].join(''));
   }
@@ -259,7 +259,7 @@ const UpperFirstLetterFunction = function(Strs){
 }
 
 //High Order function
-const highOrderAcceptingCallbackFunction = function(str, fn){
+const highOrderAcceptingCallbackFunction = function (str, fn) {
   console.log(`Original String: ${str}`);
   console.log(`Transformed String : ${fn(str)}`);
 
@@ -271,9 +271,9 @@ highOrderAcceptingCallbackFunction("javascript is best!", upperFirstWordFunction
 
 highOrderAcceptingCallbackFunction("javascript is best!", UpperFirstLetterFunction);
 
-             /* FUNCTION RETURNING ANOTHER FUNCTIONS */
-const detail = function(trainNumber){
-  return function(trainName){
+/* FUNCTION RETURNING ANOTHER FUNCTIONS */
+const detail = function (trainNumber) {
+  return function (trainName) {
     console.log(`${trainName} ${trainNumber}`);
   }
 }
@@ -289,7 +289,7 @@ detail(12342)("Ranchi Express");
 
 
 //OR WE CAN ACHEIVE FUNCTION RETURNING ANOTHER FUNCTION USING ARROW FUNCTION
-const detailArrowFun = trainNumber => trainName => console.log(` ${trainName} ${trainNumber}`) ;
+const detailArrowFun = trainNumber => trainName => console.log(` ${trainName} ${trainNumber}`);
 detailArrowFun("Jharkhand Express")(12321);
 detailArrowFun("Bihar Express")(12322);
 
@@ -297,13 +297,13 @@ detailArrowFun("Bihar Express")(12322);
 /*----------------------CALL and APPLY METHODS----------------------*/
 // -- To utilise the Functions/Methods inside any Object, we use Call and Apply method
 const akasaAir = {
-  airline:"Akasa_Air",
+  airline: "Akasa_Air",
   iataCode: "AAR",
-  bookings:[],
-  hub:"Mumbai",
+  bookings: [],
+  hub: "Mumbai",
   //book function
-  book(flightNum, flightName, passengerName){
-   this.bookings.push(`${passengerName} booked flight on ${this.airline} as per preferred flight ${flightName}, having iata code: ${this.iataCode} ${flightNum}`);
+  book(flightNum, flightName, passengerName) {
+    this.bookings.push(`${passengerName} booked flight on ${this.airline} as per preferred flight ${flightName}, having iata code: ${this.iataCode} ${flightNum}`);
   },
 };
 akasaAir.book(121, "Akasa Air", 'John Tan');
@@ -315,9 +315,9 @@ const bookOutSide = akasaAir.book;
 
 // -- CALL METHOD, pass arguments Separtely along with other object name
 const indigo = {
-  airline:"Indigo",
-  iataCode:"IXI",
-  bookings:[],
+  airline: "Indigo",
+  iataCode: "IXI",
+  bookings: [],
 }
 
 bookOutSide.call(indigo, 900, "Indigo", "Corbin Du Mont");
@@ -325,9 +325,9 @@ console.log(indigo);
 
 // -- APPLY METHOD, pass arguments as Array along with other object name
 const spicejet = {
-  airline:"Spice Jet",
-  iataCode:"SJ",
-  bookings:[],
+  airline: "Spice Jet",
+  iataCode: "SJ",
+  bookings: [],
 }
 
 const flightData = [200, "Spice Jet", "Damitra Gage"];
@@ -336,7 +336,7 @@ bookOutSide.apply(spicejet, flightData);
 console.log(spicejet);
 
 // -- BIND METHOD, Like Call and Apply but it return a New Function and will utilise again and again passing only arguments
-const bookKingFisher = bookOutSide.bind(indigo, 23,  "Indigo_Kingfisher");
+const bookKingFisher = bookOutSide.bind(indigo, 23, "Indigo_Kingfisher");
 
 
 bookKingFisher("Thomas");
@@ -344,7 +344,7 @@ bookKingFisher("John Tan");
 
 
 //Normal Application
-const addingTaxes = (rate, value) => value + value*rate;
+const addingTaxes = (rate, value) => value + value * rate;
 console.log(addingTaxes(0.2, 400));
 
 //By Call, Apply, and Bind method
@@ -363,11 +363,11 @@ console.log(taxOthers(1000));
 
 
 //Higher Order Function -- 1 Function calling another function
-const calculatingTax = function(fnrrate, fnvalue){
-  var taxAmt =  fnvalue + fnvalue * fnrrate;
+const calculatingTax = function (fnrrate, fnvalue) {
+  var taxAmt = fnvalue + fnvalue * fnrrate;
   return taxAmt;
 }
-const taxRateUsingHighOrderFunction = function(rate, value, fn){
+const taxRateUsingHighOrderFunction = function (rate, value, fn) {
   return fn(rate, value);
 }
 
@@ -375,9 +375,9 @@ console.log(taxRateUsingHighOrderFunction(0.2, 1600, calculatingTax));
 
 //Optimising
 
-const calculatingTaxOpt = function(optrate){
-  return function(optvalue){
-    return  optvalue + optvalue * optrate;
+const calculatingTaxOpt = function (optrate) {
+  return function (optvalue) {
+    return optvalue + optvalue * optrate;
   }
 }
 
@@ -396,28 +396,73 @@ console.log(calculatingTaxArrowFunction(0.5)(5500));
 
 */
 
-const runOnce =function(){
+const runOnce = function () {
   console.log("This Function will never run again!");
 }
 
 runOnce(); //but we can utilise this again and again so,
 
-(function(){
+(function () {
   console.log("This Function will never run again!");
 })();  //-- we can never use this again(IIFE)
 
 
 //Also in Arrow Function
-(()=>console.log("This Function will never run again!"))();
+(() => console.log("This Function will never run again!"))();
 
 
-/*-------------------------Function--CLOSURES-------------------------
+/*-------------------------Function--CLOSURES (Also called, Lexical Environment)-------------------------
       > Combination of functions bundled together with references to surrounding state
       > Gain Access of Outer Function Scope from Inner Function Scope
       > Closure is created everytime wherever function defined in JS
 
 */
 
-const busBooking  = function(){
-
+//example 1
+let f;
+const multiplicationNum = function (a) {
+  f = function () {
+    console.log(a * 2);
+  }
 }
+
+const additionNum = function (a) {
+  f = function () {
+    console.log(a + 10);
+  }
+}
+
+multiplicationNum(2);
+f();
+additionNum(2);
+f();  //closure are changed as variable are re-assigned
+
+
+//example 2 -- Board Passenger
+const boardPassenger = function (n, wait) {
+  //const perTeam = n/3;
+
+  setTimeout(function () {
+    console.log(`We are boarding all ${n} passengers`);
+    console.log(`There are 3 Teams, and each team with ${perTeam} passenger`);
+  }, wait * 1000);
+  console.log(`Will start onboarding in ${wait} seconds`);
+}
+
+const perTeam = 1000;
+boardPassenger(150, 5);
+
+
+//Challenge
+/*
+In below code, at the end of function attach an event that changes color from red to blue
+*/
+
+(function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+
+  document.querySelector('body').addEventListener('click', function () {
+    header.style.color = 'blue'
+  })
+})();
