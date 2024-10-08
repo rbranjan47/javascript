@@ -177,3 +177,80 @@ arr03.forEach(function (numbers, i, originalArr) {
   }
 })
 
+
+// >>>>>>>>>>>>>>> DATA TRANSFORMATION (MAP, FILTER, & REDUCE) <<<<<<<<<<<<<<<
+
+
+// >>>>>> MAP - return new Array containing results of applying an operation on all original array elements
+/*
+const newArray = array.map((currentValue, index, array) => {
+                   // Return the new value for the new array
+                  });
+*/
+const ruppeeToDollar = 83.40;
+console.log(arr03);
+
+
+const mappedArr03 = arr03.map(function (num) {
+  return num * ruppeeToDollar;
+  //return 23;  //this will map all position with 23 simply
+});
+
+console.log(mappedArr03);
+
+const ruppeeToCanDollar = 60.888;
+const mapped01Arr03 = arr03.map((num01) => {
+  return num01 * ruppeeToCanDollar;
+});
+
+console.log(mapped01Arr03);
+
+//accessing indexs and array
+const movement01arr03 = arr03.map((mov, i, originalArray) => {
+if(mov > 0){
+  console.log(`Movement: ${i+1}: Credited: ${mov} in total ${originalArray.length}`);
+} else{
+  console.log(`Movement: ${i+1}: Debited: ${mov} in total ${originalArray.length}`);
+}
+})
+
+//Creating username from name 
+const name01 = "Rabi Ranjan kumar";
+const username = name01.toLowerCase().split(' ');
+console.log(username);
+const usernameFinal = username.map(function(firstLetter){
+  return firstLetter[0];
+}).join('');
+console.log(usernameFinal);
+
+
+
+// >>>>>> FILTER - return a new Array containing thr array elements that pass a specified condition
+/* const newArray = array.map((currentValue, index, array) => {
+               // Return the new value for the new array
+                 });
+*/
+
+const movement02arr03 = arr03.filter(function(mov){
+  return mov>0;
+});
+
+console.log(movement02arr03);
+
+const movement03arr03 = arr03.filter((mov) => {
+  return mov<0;
+});
+
+console.log(movement03arr03);
+
+
+// >>>>>> REDUCE - return reduced array elements down to one single value (i.e. adding element together)
+/*  const newArray = array.reduce(function(accumulator, currentValue, index, array){
+                      }, initialValue);  
+*/
+
+const movement04arr03 = arr03.reduce(function(accumulator, currentValue){
+return accumulator  + currentValue;
+}, 0);
+
+console.log(movement04arr03);
