@@ -322,3 +322,61 @@ console.log(arr03.findLast(x => x > 5)); //9 from last 9 > 5
 console.log(arr03);  //const arr03 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, -1, -2, -3, -4, -5, -6, -7, -8, -9]
 console.log(arr03.findLastIndex(x => x > 5)); //8, as 9 is the element from the last at 8th Position from beganining
 
+
+/* SOME and EVERY method 
+ >>>>>> SOME - return true if ATLEAST ONE element present in array
+             - else False 
+             - Checking for partial matches
+
+ >>>>>> EVERY - return true if all given element present and satisfy the condition
+             - else False 
+             - Checking for uniformity
+
+
+ But We can use - INCLUDES to check but it is only for equality but NOT for Conditions and test.
+
+ Console.log(arr03.includes(-1));  //true
+*/
+
+const someFunction01 = arr03.some(x => x > 10);
+console.log(someFunction01); //False
+
+const someFunction02 = arr03.some(x => x > 4);
+console.log(someFunction02); //True
+
+const someFunction03 = arr03.some(x => x < -1 * 10);
+console.log(someFunction03); // False, no values is less than -10 i.e. -11, -12, ....
+
+const everyFunction01 = arr03.every(x => x > 0);
+console.log(everyFunction01); //False, as all values are not greater than 0
+
+const everyFunction02 = arr03.every(x => x > -1 * 10);
+console.log(everyFunction02); //true, as all other values more than -10
+
+const everyFunction03 = arr03.every(function (x) { return x > -1 * 20 });
+console.log(everyFunction03); //true, as all other values more than -20
+
+//Filter Method - return a new Array containing thr array elements that pass a specified condition
+console.log(arr03.filter(x => x > 0));
+
+
+
+/* FLAT and FLATMAP method 
+ >>>>>> FLAT - returns a new Array by Flattening a nested array(upto a specified depth). 
+             - removes nesting levels and concatenates the elements into a single array
+
+    syntax: array.flat(depth)    --- Default value: 1 
+*/
+
+//nested array
+const arr04 =[1,2,3,4,[5,6,7,[8,9,10], 11], 12];
+console.log(arr04.flat(2));
+
+
+/*
+ >>>>>> FLATMAP - returns a new Array by Mapping and Flattening a nested array.
+                - Similar to calling Map function first and then Flat.
+
+      syntax: array.flatMap(callback(currrentValue[, index[, array]])[, thisargs])    --- Default value: 1            
+
+*/
