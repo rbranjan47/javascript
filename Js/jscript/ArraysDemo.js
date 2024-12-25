@@ -137,8 +137,9 @@ console.log([...arr01, ...arr02]);
 console.log(arr02.join('-'));
 
 
-
-// >>>>>>>>>>>>>>> NEW METHODS OF ARRAY <<<<<<<<<<<<<<<
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////// >>>>>>>>>>>>>>> NEW METHODS OF ARRAY <<<<<<<<<<<<<<< ////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // >> AT method, to access the element of array
 const arr03 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, -1, -2, -3, -4, -5, -6, -7, -8, -9];
 console.log(arr01[2]); //return 2nd position element i.e. 3
@@ -207,18 +208,18 @@ console.log(mapped01Arr03);
 
 //accessing indexs and array
 const movement01arr03 = arr03.map((mov, i, originalArray) => {
-if(mov > 0){
-  console.log(`Movement: ${i+1}: Credited: ${mov} in total ${originalArray.length}`);
-} else{
-  console.log(`Movement: ${i+1}: Debited: ${mov} in total ${originalArray.length}`);
-}
+  if (mov > 0) {
+    console.log(`Movement: ${i + 1}: Credited: ${mov} in total ${originalArray.length}`);
+  } else {
+    console.log(`Movement: ${i + 1}: Debited: ${mov} in total ${originalArray.length}`);
+  }
 })
 
 //Creating username from name 
 const name01 = "Rabi Ranjan kumar";
 const username = name01.toLowerCase().split(' ');
 console.log(username);
-const usernameFinal = username.map(function(firstLetter){
+const usernameFinal = username.map(function (firstLetter) {
   return firstLetter[0];
 }).join('');
 console.log(usernameFinal);
@@ -231,14 +232,14 @@ console.log(usernameFinal);
                  });
 */
 
-const movement02arr03 = arr03.filter(function(mov){
-  return mov>0;
+const movement02arr03 = arr03.filter(function (mov) {
+  return mov > 0;
 });
 
 console.log(movement02arr03);
 
 const movement03arr03 = arr03.filter((mov) => {
-  return mov<0;
+  return mov < 0;
 });
 
 console.log(movement03arr03);
@@ -247,10 +248,77 @@ console.log(movement03arr03);
 // >>>>>> REDUCE - return reduced array elements down to one single value (i.e. adding element together)
 /*  const newArray = array.reduce(function(accumulator, currentValue, index, array){
                       }, initialValue);  
-*/
 
-const movement04arr03 = arr03.reduce(function(accumulator, currentValue){
-return accumulator  + currentValue;
+                      - accumulator = actual value & variable
+                      - currentValue = parsing value & variable
+                      - index = position of element 
+                      - array = array's variable
+*/
+console.log(arr03);
+
+const movement04arr03 = arr03.reduce(function (accumulator, currentValue) {
+  return accumulator + currentValue;
 }, 0);
 
-console.log(movement04arr03);
+console.log('Result ' + movement04arr03);
+
+//Map, Filter, & Reduce - Chanining/ PIPELINE
+const movement05arr03_map_filter_reduceChanining = arr03.filter(mov => mov > 0)
+  .map(mov => ruppeeToDollar * mov)
+  .reduce((accumulator, mov) => accumulator + mov, 0);
+
+console.log("Result: ", movement05arr03_map_filter_reduceChanining);
+
+
+
+//Coding Challenge - aVERAGE OF DATA1 & DATA2, USING ARROW FUNCTION
+const data1 = [5, 2, 4, 1, 15, 8, 3];
+const dataAvg = data1.reduce((acc, startValue) => acc + startValue, 0) / data1.length;
+console.log(dataAvg);
+
+
+
+
+/* >>>>>> FIND - return FIRST found element, undefined when not found
+               - Iterate all element of array
+               - not mutuable, means not change the original array
+               - also acceps Callback function 
+*/
+
+console.log(data1.find(movData => movData > 2)); //5 is the first element that true the condition
+
+for (let x of data1) {
+  if (data1.find(movData => movData > 2)) {
+    console.log(x);
+  }
+}
+
+/*
+  >>>>>> FINDINDEX - return FIRST found element, undefined when not found
+               - Iterate all element of array
+               - not mutuable, means not change the original array
+               - also acceps Callback function 
+*/
+console.log(arr03);  //const arr03 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, -1, -2, -3, -4, -5, -6, -7, -8, -9]
+console.log(arr03.findIndex(x => x > 5)); //5, as 6 is the element at 5th Position
+
+
+/* >>>>>> FINDLAST - return FIRST found LAST element, undefined when not found
+               - Iterate all element of array
+               - not mutuable, means not change the original array
+               - also acceps Callback function 
+
+*/
+
+console.log(arr03);  //const arr03 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, -1, -2, -3, -4, -5, -6, -7, -8, -9]
+console.log(arr03.findLast(x => x > 5)); //9 from last 9 > 5
+
+/*
+  >>>>>> FINDLASTINDEX - return FIRST found LAST element, undefined when not found
+               - Iterate all element of array
+               - not mutuable, means not change the original array
+               - also acceps Callback function 
+*/
+console.log(arr03);  //const arr03 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, -1, -2, -3, -4, -5, -6, -7, -8, -9]
+console.log(arr03.findLastIndex(x => x > 5)); //8, as 9 is the element from the last at 8th Position from beganining
+
