@@ -303,7 +303,7 @@ const akasaAir = {
   hub: "Mumbai",
   //book function
   book(flightNum, flightName, passengerName) {
-    this.bookings.push(`${passengerName} booked flight on ${this.airline} as per preferred flight ${flightName}, having iata code: ${this.iataCode} ${flightNum}`);
+    this.bookings.push(`${passengerName} booked flight: ${this.airline}, Name: ${flightName}, Code: ${this.iataCode} ${flightNum}`);
   },
 };
 akasaAir.book(121, "Akasa Air", 'John Tan');
@@ -336,12 +336,16 @@ bookOutSide.apply(spicejet, flightData);
 console.log(spicejet);
 
 // -- BIND METHOD, Like Call and Apply but it return a New Function and will utilise again and again passing only arguments
-const bookKingFisher = bookOutSide.bind(indigo, 23, "Indigo_Kingfisher");
-
-
+const airIndia = {
+  airline: "Air India",
+  iataCode: "AIA",
+  bookings:[]
+}
+const bookKingFisher = bookOutSide.bind(airIndia, 23, "Indigo_Kingfisher");
 bookKingFisher("Thomas");
-bookKingFisher("John Tan");
-
+bookKingFisher("Alex");
+bookKingFisher("Sam");
+console.log(airIndia);
 
 //Normal Application
 const addingTaxes = (rate, value) => value + value * rate;

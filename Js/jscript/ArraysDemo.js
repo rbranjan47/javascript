@@ -369,8 +369,13 @@ console.log(arr03.filter(x => x > 0));
 */
 
 //nested array
-const arr04 =[1,2,3,4,[5,6,7,[8,9,10], 11], 12];
+const arr04 = [1, 2, 3, 4, [5, 6, 7, [8, 9, 10], 11], 12];
 console.log(arr04.flat(2));
+
+
+//But Main Question - How to get Dynamice size value?  ----- pass Infinity 
+const arr04Flats = arr04.flat(Infinity);
+console.log(arr04Flats);
 
 
 /*
@@ -379,4 +384,158 @@ console.log(arr04.flat(2));
 
       syntax: array.flatMap(callback(currrentValue[, index[, array]])[, thisargs])    --- Default value: 1            
 
+*/
+
+
+//CODING CHALLENGE
+/*
+1. Store the Average weight and height of dog breed - HUSKY in huskyWeight and huskyHieght
+2. Find the name of the only breed that line both 'Running' and 'Fetching' (in dogBothActivities)
+3. Create an array 'uniqueActivities' of all the actvities of the dog breeds
+4. Many dog breed like to Swimming. What other activities they do
+5. Do all the breeds of average weight of 18 or more. Log to the console true or false
+6. Are there ay Active breeds? Active --> More than 3 activity
+7. Sum of all averageWeight and averageHeight
+*/
+const dogBreeds = [
+  {
+    breed: "Labrador Retriever",
+    averageWeight: "25",
+    averageHeight: "55",
+    activities: ["Swimming", "Fetching", "Hiking"]
+  },
+  {
+    breed: "German Shepherd",
+    averageWeight: "22",
+    averageHeight: "55",
+    activities: ["Herding", "Guarding", "Obedience Training"]
+  },
+  {
+    breed: "Golden Retriever",
+    averageWeight: "25",
+    averageHeight: "51",
+    activities: ["Playing Fetch", "Therapy Work", "Swimming"]
+  },
+  {
+    breed: "Bulldog",
+    averageWeight: "18",
+    averageHeight: "31",
+    activities: ["Relaxing", "Walking", "Socializing"]
+  },
+  {
+    breed: "Poodle",
+    averageWeight: "20",
+    averageHeight: "38",
+    activities: ["Agility Training", "Obedience Training", "Retrieving"]
+  },
+  {
+    breed: "Beagle",
+    averageWeight: "9",
+    averageHeight: "33",
+    activities: ["Tracking", "Hunting", "Playing"]
+  },
+  {
+    breed: "Rottweiler",
+    averageWeight: "35",
+    averageHeight: "56",
+    activities: ["Guarding", "Agility Training", "Hiking", "Fetching"]
+  },
+  {
+    breed: "Siberian Husky",
+    averageWeight: "16",
+    averageHeight: "50",
+    activities: ["Sledding", "Running", "Playing"]
+  },
+  {
+    breed: "Dachshund",
+    averageWeight: "7",
+    averageHeight: "20",
+    activities: ["Digging", "Chasing", "Cuddling"]
+  },
+  {
+    breed: "Boxer",
+    averageWeight: "25",
+    averageHeight: "53",
+    activities: ["Running", "Fetching", "Guarding"]
+  }
+];
+
+
+//Solution - 1. Store the Average weight and height of dog breed - HUSKY in huskyWeight and huskyHieght
+const dogActivitiesArray01 = [];
+for (let a in dogBreeds) {
+  dogActivitiesArray01.push(dogBreeds[a].breed + ": " + dogBreeds[a].averageHeight);
+}
+
+console.log(dogActivitiesArray01.flat(Infinity));
+
+//or
+const allActivities = dogBreeds.flatMap(breed => breed.activities);
+console.log(allActivities);
+
+
+
+//solution - 2. Find the name of the only breed that line both 'Running' and 'Fetching' (in dogBothActivities)
+const dogBothActivities = dogBreeds.find(breeds => breeds.activities.includes("Running") && breeds.activities.includes("Fetching"));
+
+
+console.log(dogBothActivities);
+
+
+
+//solution - 3. Create an array 'uniqueActivities' of all the actvities of the dog breeds
+const uniqueActivities = new Set(allActivities);
+
+console.log(Array.from(uniqueActivities));
+
+
+//solution - 4. Many dog breed like to Swimming. What other activities they do
+const otherThanSwimming = dogBreeds.filter(breed => breed.activities.includes("Swimming"));
+console.log(otherThanSwimming);
+
+//solution - 5. Do all the breeds of average weight of 18 or more. Log to the console true or false
+const areAverageWeight = dogBreeds.every(breed => breed.averageWeight >= 18);
+console.log(areAverageWeight);
+
+//solution - 6. Are there ay Active breeds? Active --> More than 3 activity
+const areActiveBreeds = dogBreeds.some(breed => breed.activities.length > 3);
+console.log(areActiveBreeds);
+
+//solution - 7. Sum of all averageWeight and averageHeight
+const sumAverageWeight = dogBreeds.reduce((acc, breed) => acc + Number(breed.averageWeight), 0);
+console.log("Average Weight: " + sumAverageWeight);
+
+const sumAverageHeight = dogBreeds.reduce((acc, breed) => acc + Number(breed.averageHeight), 0);
+console.log("Average Height: " + sumAverageHeight);
+
+
+
+// >>>>>> SORT - return a new Array after sorting it based on Functions
+console.log(arr03);
+
+const sortedArray = arr03.sort(); //so sorting is mutating the Array i.e., it is changing the Array
+
+console.log(sortedArray); //  [-1, -2, -3, -4, -5, -6, -7, -8, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+//Result is not proper sorted, so we have to create function in it
+const sortedArrayFunction = arr03.sort((a, b) =>
+  //{ if(a >b ) return 1;
+  //if(a < b) return -1;  }
+  a - b
+);
+console.log(sortedArrayFunction);
+
+
+// >>>>>> ARRAY GROUPING - Grouping element to organize or process data.
+const groupedArray = Object.groupBy(arr03, x => x > 1 ? "Wild Robot" : " Wall E");
+console.log(groupedArray);
+/*result: 
+Wall E: Array of 10: -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1
+Wild Robot: Array of 8 : 2, 3, 4, 5, 6, 7, 8, 9
+*/
+
+const arr05Names = ['John', 'Scott', 'Corbin', 'Thomas', 'Damitra', 'Nick', 'Mary', 'Alex', 'Sam'];
+console.log(Object.groupBy(arr05Names, x => x.length > 5 ? "Long Names: " : "Short Names: "));
+/*result: 
+Long Names: Array of 3: ['Corbin', 'Thomas', 'Damitra']
+Short Names: Array of 6:  ['John', 'Scott', 'Nick', 'Mary', 'Alex', 'Sam']
 */
