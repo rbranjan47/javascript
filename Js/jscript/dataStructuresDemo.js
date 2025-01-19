@@ -64,6 +64,10 @@ console.log(p,q,o,r,s);
 
 /*
                >>>>>>>>>>>>>> Destructuring OBJECTS <<<<<<<<<<<<<<
+                
+               
+                            [] = to perform array destructuring
+//                          {} = to perform object destructuring
 */
 
 const {name, profile, locationCountry} = personDetails;

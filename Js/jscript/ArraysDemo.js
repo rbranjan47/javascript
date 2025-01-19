@@ -323,7 +323,7 @@ console.log(arr03);  //const arr03 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, -1, -2, -3, 
 console.log(arr03.findLastIndex(x => x > 5)); //8, as 9 is the element from the last at 8th Position from beganining
 
 
-/* SOME and EVERY method 
+/*   >>>>>>   >>>>>>   >>>>>>   >>>>>> SOME and EVERY method   <<<<<< <<<<<< <<<<<< <<<<<< 
  >>>>>> SOME - return true if ATLEAST ONE element present in array
              - else False 
              - Checking for partial matches
@@ -361,7 +361,7 @@ console.log(arr03.filter(x => x > 0));
 
 
 
-/* FLAT and FLATMAP method 
+/* >>>>>> >>>>>> >>>>>> >>>>>> >>>>>>FLAT and FLATMAP method <<<<<< <<<<<< <<<<<< <<<<<< <<<<<< 
  >>>>>> FLAT - returns a new Array by Flattening a nested array(upto a specified depth). 
              - removes nesting levels and concatenates the elements into a single array
 
@@ -525,7 +525,8 @@ const sortedArrayFunction = arr03.sort((a, b) =>
 console.log(sortedArrayFunction);
 
 
-// >>>>>> ARRAY GROUPING - Grouping element to organize or process data.
+// >>>>>> >>>>>> >>>>>> >>>>>> ARRAY GROUPING <<<<<< <<<<<< <<<<<< <<<<<<
+// - Grouping element to organize or process data.
 const groupedArray = Object.groupBy(arr03, x => x > 1 ? "Wild Robot" : " Wall E");
 console.log(groupedArray);
 /*result: 
@@ -539,3 +540,76 @@ console.log(Object.groupBy(arr05Names, x => x.length > 5 ? "Long Names: " : "Sho
 Long Names: Array of 3: ['Corbin', 'Thomas', 'Damitra']
 Short Names: Array of 6:  ['John', 'Scott', 'Nick', 'Mary', 'Alex', 'Sam']
 */
+
+
+// >>>>>> >>>>>> >>>>>> >>>>>> MORE WAYS OF CREATING & FILLING ARRAY <<<<<< <<<<<< <<<<<< <<<<<<
+/*
+Till now we have created Array like this
+  const array01 = [1,2,3,,4,5,6,7,8,9];
+
+  or 
+  console.log(new Array(1,2,3,4,5,6,7,8,9));
+
+  But we can create in this way also.
+*/
+
+const array001 = new Array(10);
+console.log(array001); //It will create EMPTY array of size 10
+
+/* >>>>> >>>>> >>>>> >>>>> FILL method <<<<< <<<<< <<<<< <<<<<
+
+Syntax: array.fill(number_to_fill_in_array);  ex. array.fill(2) then all element will be updated by 2
+
+        array.fill(number_to_fill_in_array, from_what_index)  ex. array.fill(3, 4)
+
+        array.fill(number_to_fill_in_array, from_what_index, upto_what_index)  ex. array.fill(3, 4, 6)
+                - so, from 3rd index to 6th index, it will fill 4 to all
+*/
+
+array001.fill(2, 3, 6);
+console.log(array001);  // [empty × 3, 2,2, 2, empty × 4]
+
+/* >>>>> >>>>> >>>>> >>>>> FROM method <<<<< <<<<< <<<<< <<<<<
+*/
+
+const array002FromMethod = Array.from({ length: 10 }, () => 1);
+console.log(array002FromMethod); //[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+const array003FromMethod = Array.from({ length: 10 }, (_, i) => i + 1);
+//_ is placeholder for the unused value and i is the Index 
+console.log(array003FromMethod); //1, 2, 3, 4, 5, 6, 7, 8, 9, 10] taking current index and adding 1
+
+
+
+// >>>>>> >>>>>> >>>>>> >>>>>> toREVERSED, toSORTED, AND toSPLICE <<<<<< <<<<<< <<<<<< <<<<<<
+/*
+       >>>>>> Reverse method:
+                   -- Reverse method is use to Reverse the array and return mutated array
+                   -- Mutated array means changed the original Array, so it is destructive array
+*/
+console.log(array003FromMethod.reverse());
+console.log(array003FromMethod); // till here, [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+
+
+/* To resolve this method, we can use 
+       >>>>>>  toReversed method
+                   -- Reverse method is use to Reverse the array and return un-mutated array
+*/
+console.log(array003FromMethod.toReversed()); //reversed without mutating [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+console.log(array003FromMethod); //unchouched, [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+
+/* 
+>>>>>>  splice method
+            -- return mutated array from given (fristIndex) to (givenLastIndex)'s elements
+*/
+
+//console.log(array003FromMethod.splice(1, 4, 5)); //return removed element from 1st to 4th index i.e., [9, 8, 7, 6]
+//console.log(array003FromMethod); //return remaining element in the array i.e. [10, 5, 5, 4, 3, 2, 1] after adding replaced element
+
+/* 
+>>>>>>  toSpliced method
+            -- return un-mutated array from given (fristIndex) to (givenLastIndex - 1)'s elements
+*/
+
+console.log(array003FromMethod.toSpliced(1, 4, 5)); //return result array after removing given startIndex to endIndex elements with passed elements
+console.log(array003FromMethod);
