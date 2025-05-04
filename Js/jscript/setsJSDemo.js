@@ -22,7 +22,7 @@ const orderSetArray2 = new Set(["Hey Good Morning", "Good Night"]);  //Iterates 
 console.log(orderSetArray2);
 
 //Iterates string
-const orderSetString = new Set("Hey Good Morning");
+const orderSetString = new Set("Hey Good Morning"); //Hey GodMrnig -- 12
 console.log(orderSetString); //Iterates each Character of String
 
 //size
@@ -80,3 +80,4 @@ for(const iteratingIndiaCity of topIndianCity){
 topIndianCity.forEach(function(value, originalIndiaCitySet){
         console.log(`City: ${value} and with word length: ${originalIndiaCitySet.length}`);
 });
+
