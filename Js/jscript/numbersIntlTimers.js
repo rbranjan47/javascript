@@ -190,4 +190,14 @@ setTimeout(() => {
 }, 5000); 
 
 //setInterval - Executes a function repeatedly, with a fixed time delay between each call
- 
+setInterval(() => {
+    console.log(`Current time is: ${new Date().toLocaleTimeString()}`);
+}, 1000);
+
+
+//clearTimeout - Stops the execution of a function scheduled by setTimeout
+const timeoutId = setTimeout(() => {
+    console.log("This will not be executed");
+}, 5000);       
+
+clearTimeout(timeoutId); // This will prevent the above timeout from executing  
