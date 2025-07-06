@@ -102,3 +102,92 @@ console.log(Math.floor(23.45));  // result  > 23
 console.log(5 % 2);  //remainder is 1
 console.log(5 / 2);  //2.5 as this is not remainder-- it is result
 
+
+//------------------------ Numreic Separator ------------------------//
+const bankBalancesWant = 1234567890;
+console.log(bankBalancesWant);
+//But it is very hard to undertand the values like what it is million, billion, trillion
+//To ease this we use _
+const finalBankBalnceWeWant = 123_456_789_0;
+console.log(finalBankBalnceWeWant); //output will same- 1234567890
+
+
+//>>>>>>>>>>>>>>>>>>>>> BIGINT <<<<<<<<<<<<<<<<<<<<<<<<<
+console.log(123456789 * 123456789123456789); //might we get some random numbers
+
+console.log(BigInt(123456789 * 123456789123456789)); 
+//or
+console.log(12345678998765432111234n);
+
+
+//>>>>>>>>>>>>>>>>>>>>> DATE CALENDER <<<<<<<<<<<<<<<<<<<<<<<<<
+const dateNow = new Date;
+console.log(dateNow);
+
+/* ---------- We can als write manually ----------*/
+console.log(new Date("June 15, 2025"));  //define Month Date, Year
+console.log(new Date("Jun 15 2025 16:49:30")); //define Mon Date Year Hour:Minutes:Seconds
+console.log(new Date(2025, 10, 12)); //define Year Month Date   
+//but output is Wed Nov 12 2025 00:00:00 GMT+0530 (India Standard Time)  - 10 is for october but
+// here it is november as JS starts MONTHS from 0l̥
+
+const dateFormat = new Date(2025, 10, 6,23, 11,50);
+console.log(`Year ${dateFormat.getFullYear()}`);
+console.log(`Month ${dateFormat.getMonth()}`);
+console.log(`Date ${dateFormat.getDate()}`);
+console.log(`Hours ${dateFormat.getHours()}`);
+console.log(`Seconds ${dateFormat.getSeconds()}`);
+console.log(`ISOString- ${dateFormat.toISOString()}`);
+console.log(`TimeOffSet- ${dateFormat.getTimezoneOffset()}`);
+console.log(dateFormat.getTime());
+console.log(new Date(1762450910000));
+
+//------------------------ Operations with Dates ------------------------//
+const daysPassed = (date1, date2) => (date1 - date2);
+
+console.log(`second passed: ${daysPassed(dateFormat, new Date(2025, 10, 6, 23, 11, 49))/1000}`)
+console.log(`Hour passed: ${(daysPassed(dateFormat, new Date(2025, 10, 6, 12, 11, 50))/1000)/(60 * 60) }`)
+console.log(`Days passed: ${daysPassed(dateFormat, new Date(2025, 10, 2, 23, 11, 50))/(1000 * 60 * 60 * 24)}`)
+
+
+//------------------------ Internationalizing Date (Intl) ------------------------//
+const now = new Date();
+console.log(now.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric" 
+}));  // July 6, 2025
+
+
+console.log(now.toLocaleDateString("en")); // 7/6/2025 (by default it is US format))
+console.log(now.toLocaleDateString("en-IN")); // 6/7/2025 (it is Indian format)
+console.log(now.toLocaleDateString("en-UK")); // 06/07/2025 (it is UK format)
+console.log(now.toLocaleDateString("ar-SY")); // ٦/٧/٢٠٢٥ (in arabic symbols)
+
+
+//By Intl object
+console.log(new Intl.DateTimeFormat("en-US").format(now)); // 7/6/2025
+console.log(new Intl.DateTimeFormat("en-IN").format(now)); // 6/7/2025
+console.log(new Intl.DateTimeFormat("en-UK").format(now)); // 06/07/2025
+
+
+//------------------------ Internationalizing Numbers (Intl) ------------------------//
+const number = 123456.789;
+console.log(new Intl.NumberFormat("en-US").format(number)); // 123,456.789
+console.log(new Intl.NumberFormat("en-IN").format(number)); // 1,23,456.789         
+
+//By Intl object
+console.log(new Intl.NumberFormat("en-UK").format(number)); // 123,456.789
+console.log(new Intl.NumberFormat("en-IN").format(number)); // 123.456,789
+console.log(new Intl.NumberFormat("en-US").format(number)); // 123.456,789
+console.log(new Intl.NumberFormat("ar-SY").format(number)); // ١٢٣٤٥٦٫٧٨٩   
+
+
+//------------------------ Timers in JS------------------------//
+//setTimeout - Executes a function after a specified number of milliseconds
+setTimeout(() => {
+    console.log("This is setTimeout, execute after 5 seconds");
+}, 5000); 
+
+//setInterval - Executes a function repeatedly, with a fixed time delay between each call
+ 
