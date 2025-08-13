@@ -393,8 +393,8 @@ console.log(`Area of Rectangle: ${rectangle.areaofRectangle}`); // Area of Recta
 
 
 
-class studentNameGetterANDSetter{
-   constructor(student_name, student_rank){
+class studentNameGetterANDSetter {
+   constructor(student_name, student_rank) {
       this.student_name = student_name;
       this.student_rank = student_rank;
    }
@@ -404,8 +404,8 @@ class studentNameGetterANDSetter{
    }
 
    set studentDetailsName(name) {
-     this.student_name = name;
-     console.log(`Student name is: ${this.student_name}`);
+      this.student_name = name;
+      console.log(`Student name is: ${this.student_name}`);
    }
 
    set studentRank(rank) {
@@ -421,3 +421,77 @@ class studentNameGetterANDSetter{
 studentNameGetterANDSetter.studentDetailsName = "Rabi Ranjan";
 studentNameGetterANDSetter.studentRank = 5;
 console.log(studentNameGetterANDSetter.studentDetails); // Name: Rabi Ranjan, Rank: 5
+
+
+//------------------------ Static Methods ------------------------//
+// Static methods are called on the class itself, not on instances of the class.
+
+class MathUtils {
+   static add(a, b) {
+      return a + b;
+   }
+
+   static subtract(a, b) {
+      return a - b;
+   }
+}
+
+console.log(MathUtils.add(5, 3)); // 8
+console.log(MathUtils.subtract(10, 4)); // 6    
+
+//How static methods are different from instance methods?
+// Static methods are called on the class itself, not on instances of the class.
+
+//Example of static vs instance methods:
+class Circle {
+   constructor(radius) {
+      this.radius = radius;
+   }
+
+   static calculateArea(radius) {
+      return Math.PI * radius * radius;
+   }
+
+   get area() {
+      return Circle.calculateArea(this.radius);
+   }
+}
+
+const circle = new Circle(5);
+console.log(Circle.calculateArea(5)); // 78.53981633974483
+console.log(circle.area); // 78.53981633974483  
+
+//------------------------ Object.create() ------------------------//
+// Object.create() is a method that creates a new object with the specified prototype object and properties
+
+const person01 = {
+   greet() {
+      console.log("Hello!");
+   }
+};
+
+const john = Object.create(person01);
+john.greet(); // Hello!
+
+// Why use Object.create()?
+// 1. It allows you to create an object with a specific prototype without using a constructor
+// 2. It provides a way to set up inheritance without using constructor functions or classes.
+// 3. It allows you to create objects with a specific prototype and properties in a more concise way.
+
+//Difference between Object.create() and new operator?
+//Example of Object.create():
+const person02 = {
+   greet() {
+      console.log("Hi!");
+   }
+};
+
+const jane = Object.create(person02);
+jane.greet(); // Hi!
+
+// Example of new operator:
+function Person(name) {
+   this.name = name;
+}
+const mike = new Person("Mike");
+console.log(mike.name); // Mike
