@@ -495,3 +495,6 @@ function Person(name) {
 }
 const mike = new Person("Mike");
 console.log(mike.name); // Mike
+// The main difference is that Object.create() creates an object with a specific prototype, while new operator creates an instance of a constructor function.  
+
+

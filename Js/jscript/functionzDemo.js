@@ -26,14 +26,14 @@ console.log(`Total Fruits : ${totalFruits}`);
 
 //Function ---> Declaration vs Expressions
 
-/*Expressions */
+/*Declarations */
 function calculateAge(birthYear) {
   return 2023 - birthYear;
 }
 
 console.log(calculateAge(1997));
 
-/*Declarations */
+/*Expression */
 const calculateAge2 = function (birthYears) {
   return 2023 - birthYears;
 };

@@ -44,34 +44,45 @@ console.log(names);
 values.push(2001);
 console.log(values);
 
+//unshift--> to add element at beginning of array
+names.unshift('Mary');
+names.unshift('Alex');
+names.unshift('Sam');
+names.unshift('Rabi');
+names.unshift('Ranjan');
+names.unshift('Kumar');
+console.log(names); //['Rabi', 'Ranjan', 'Kumar', 'Sam', 'Alex', 'Mary', 'Corbin', 'Scott', 'John', 'David', 'Damitra', 'thomas', 'Nick']
+
 //POPPING OUT ELEMENT-----removing elements
 names.pop(); //removes last element of array i.e . Nick
+names.pop(); //removes last element of array i.e . thomas
+names.pop(); //removes last element of array i.e . Damitra
 console.log(names);
 
 names.shift(); //shift array to next from first element of array i.e. corbin
 console.log(names);
 
 //Index of elements
-console.log('Index: ' + names.indexOf('thomas'));
+console.log('Index: ' + names.indexOf('thomas')); //-1, as thomas is removed
 
 //Includes elements or not
-const includesNames1 = names.includes('Damitra');
+const includesNames1 = names.includes('Damitra'); //false, as Damitra is removed
 console.log(includesNames1);
 
 const includesNames2 = names.includes('Nick');
-console.log(includesNames2);
+console.log(includesNames2); //false, as Nick is removed
 
 //to string, whole array
 const namesString = names.toString();
-console.log(namesString);
+console.log(namesString); //Corbin,Scott,John,David
 
 //to string, array element
 const namesStringEle = names[3].toString();
-console.log(namesStringEle);
+console.log(namesStringEle); //David
 
 //sorting of array
-const valuesSorting = values.sort();
-console.log(`Ascending: ${valuesSorting}`);
+const valuesSorting = values.sort(); //it will sort as string not number
+console.log(`Ascending: ${valuesSorting}`); //Ascending: 1995,1996,1997,1998,1999,2000,2001
 
 const valueReverseSorting = values.sort().reverse();
 console.log(`Descending: ${valueReverseSorting} `);
